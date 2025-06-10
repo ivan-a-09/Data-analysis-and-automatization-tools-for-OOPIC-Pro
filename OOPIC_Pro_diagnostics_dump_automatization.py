@@ -6,7 +6,7 @@ app = Application(backend='uia').connect(title_re=".*OOPIC Pro.*")
 main_window = app.window(title_res="-*OOPIC Pro.*")
 
 
-iter4dump = 10      ### NUMBER OF ITERATIOS BETWEEN SAVE FILES
+iter4dump = 10      ### NUMBER OF ITERATIONS BETWEEN SAVE FILES
 maxiter = 2000      ### TOTAL NUMBER OF ITERATIONS FOR THE SIMULATION
 
 for iteration in range(1*iter4dump,maxiter+iter4dump,iter4dump):
