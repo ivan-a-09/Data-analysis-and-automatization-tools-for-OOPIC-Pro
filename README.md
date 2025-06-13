@@ -71,11 +71,10 @@ No return value, modifies <code>phi</code> in-place.
 </p>
 </details>
 
-### restrict(res): ndarray
 <details>
-<summary>Restricts residual to a coarser grid using full-weighting stencil.</summary>
+<summary><code>restrict(res): ndarray</code></summary>
 <p>
-Reduces the resolution of the residual array <code>res</code> to a coarser grid by applying a weighted average over a 3x3 stencil. Boundaries use simple averaging if full stencil is unavailable.
+Restricts residual to a coarser grid using full-weighting stencil. Reduces the resolution of the residual array <code>res</code> to a coarser grid by applying a weighted average over a 3x3 stencil. Boundaries use simple averaging if full stencil is unavailable.
 
 <b>Parameters:</b><br>
 - <code>res</code>: 2D ndarray, residual on fine grid.<br>
@@ -85,13 +84,10 @@ Reduces the resolution of the residual array <code>res</code> to a coarser grid 
 </p>
 </details>
 
----
-
-### prolongate(error, target_shape): ndarray
 <details>
-<summary>Prolongates an error from coarse to fine grid by bilinear interpolation.</summary>
+<summary><code>prolongate(error, target_shape): ndarray</code></summary>
 <p>
-Interpolates the coarse grid <code>error</code> to a finer grid of shape <code>target_shape</code> using bilinear interpolation with explicit loops to enable JIT compilation.
+Prolongates an error from coarse to fine grid by bilinear interpolation. Interpolates the coarse grid <code>error</code> to a finer grid of shape <code>target_shape</code> using bilinear interpolation with explicit loops to enable JIT compilation.
 
 <b>Parameters:</b><br>
 - <code>error</code>: 2D ndarray, error on coarse grid.<br>
@@ -102,13 +98,10 @@ Interpolates the coarse grid <code>error</code> to a finer grid of shape <code>t
 </p>
 </details>
 
----
-
-### vcycle(phi, rhs, dx, dy): ndarray
 <details>
-<summary>Performs one iterative V-cycle of the multigrid solver.</summary>
+<summary><code>vcycle(phi, rhs, dx, dy): ndarray</code></summary>
 <p>
-Constructs a multigrid hierarchy by restriction down to coarsest grid (smallest dimension ≤ 7), performs smoothing, then prolongates corrections upward.
+Performs one iterative V-cycle of the multigrid solver. Constructs a multigrid hierarchy by restriction down to coarsest grid (smallest dimension ≤ 7), performs smoothing, then prolongates corrections upward.
 
 <b>Parameters:</b><br>
 - <code>phi</code>: 2D ndarray, initial solution estimate.<br>
@@ -120,13 +113,10 @@ Constructs a multigrid hierarchy by restriction down to coarsest grid (smallest 
 </p>
 </details>
 
----
-
-### multigrid_solver(phi, rhs, dx, dy, n_vcycles=5): ndarray
 <details>
-<summary>Performs multiple V-cycles to iteratively solve the Poisson problem.</summary>
+<summary><code>multigrid_solver(phi, rhs, dx, dy, n_vcycles=5): ndarray</code></summary>
 <p>
-Repeatedly applies the <code>vcycle</code> function to progressively improve the solution estimate <code>phi</code>.
+Performs multiple V-cycles to iteratively solve the Poisson problem. Repeatedly applies the <code>vcycle</code> function to progressively improve the solution estimate <code>phi</code>.
 
 <b>Parameters:</b><br>
 - <code>phi</code>: 2D ndarray, initial guess.<br>
@@ -138,4 +128,22 @@ Repeatedly applies the <code>vcycle</code> function to progressively improve the
 - 2D ndarray, refined solution after all cycles.
 </p>
 </details>
+
+### Amplitude time evolution
+
+This section includes the functions used for studying the time evolution of the amplitude of all perturbation modes present in the given data.
+
+<details> <summary><code>get_amplitude_evolution(Data_history, nframes, iter_per_step, m_list, r_0, r_width_average, variable_name, R_max, N_r, Data_ranges): tuple</code></summary> <p> Computes the log amplitude evolution over time for selected Fourier modes.<br> <b>Data_history</b>: List of dictionaries containing FFT data.<br> <b>nframes</b>: Number of frames (time steps).<br> <b>iter_per_step</b>: Iterations per frame.<br> <b>m_list</b>: List of mode numbers to extract.<br> <b>r_0</b>: Target radius for extraction.<br> <b>r_width_average</b>: Averaging half-width in radial index.<br> <b>variable_name</b>: Name of the variable.<br> <b>R_max</b>: Maximum radius.<br> <b>N_r</b>: Number of radial points.<br> <b>Data_ranges</b>: Dictionary of variable data ranges for scaling.<br> <b>tuple</b>: (2D array of log amplitudes, array of iteration numbers). </p></details> <details> <summary><code>write_amplitude_evo(directory, variable_name, iterations, log_amplitude_list): None</code></summary> <p> Writes the amplitude evolution data to a text file.<br> <b>directory</b>: Base directory to store the file.<br> <b>variable_name</b>: Variable name (used as subdirectory).<br> <b>iterations</b>: Array of iteration numbers.<br> <b>log_amplitude_list</b>: 2D array of log amplitudes.<br> <b>None</b>: Writes file and prints confirmation. </p></details> <details> <summary><code>read_amplitude_evo(directory, variable_name): tuple</code></summary> <p> Reads the amplitude evolution data from a text file.<br> <b>directory</b>: Base directory containing the file.<br> <b>variable_name</b>: Variable name (subdirectory).<br> <b>tuple</b>: (2D array of log amplitudes, list of iterations). </p></details> <details> <summary><code>get_amplitude_evolution_plot(log_amplitude_list, iterations, modes_list, iter_range, normalization_flag, variable_name, r_0, r_width_average, R_max, N_r, dt): Figure</code></summary> <p> Generates a plot of the log amplitude evolution for selected modes.<br> <b>log_amplitude_list</b>: 2D array of log amplitudes.<br> <b>iterations</b>: Array of iteration numbers.<br> <b>modes_list</b>: List or int: modes to plot or number of top modes.<br> <b>iter_range</b>: (start, end) indices for the range to plot.<br> <b>normalization_flag</b>: Whether to normalize to the initial value in range.<br> <b>variable_name</b>: Name of the variable.<br> <b>r_0</b>: Target radius.<br> <b>r_width_average</b>: Averaging width in radial index.<br> <b>R_max</b>: Maximum radius.<br> <b>N_r</b>: Number of radial points.<br> <b>dt</b>: Time step size.<br> <b>Figure</b>: Matplotlib figure object with the plot. </p></details>
+
+### Shear layer study
+
+This section includes the functions developed in order to visualize the time evolution of the shear layer (arbitrary shear layer profile).
+
+<details> <summary><code>get_shear_layer_plot(avg_Variable_straight_frame, std_Variable_straight_frame, R_max, upper_lim, bottom_lim): tuple</code></summary> <p> Plots the shear layer profile with mean and standard deviation.<br> <b>avg_Variable_straight_frame</b>: Mean velocity profile.<br> <b>std_Variable_straight_frame</b>: Standard deviation of the profile.<br> <b>R_max</b>: Maximum radius.<br> <b>upper_lim</b>: Upper y-axis limit.<br> <b>bottom_lim</b>: Lower y-axis limit.<br> <b>tuple</b>: (Figure, mean line, std fill, iteration text). </p></details> <details> <summary><code>get_shear_layer_anim(Variable_straight, R_max, nframes, iter_per_step, frame_initial): FuncAnimation</code></summary> <p> Generates an animation of the shear layer evolution over time.<br> <b>Variable_straight</b>: List of (N_r, N_theta) arrays over time.<br> <b>R_max</b>: Maximum radius.<br> <b>nframes</b>: Number of frames.<br> <b>iter_per_step</b>: Iterations per frame.<br> <b>frame_initial</b>: Initial frame index.<br> <b>FuncAnimation</b>: Matplotlib animation object. </p></details>
+
+### Instability criteria for an arbitrary profile
+
+This section gathers the functions used to caracterize and study the arbitrary shear layer profile obtained in the previous section. It includes a custom function to solve the previously analytical procedure for simpler approximation, generalizing thus to arbitrary shear layer profiles. It eneables the user to collect the growth rates of the different perturbation modes, store and read the processed data and visualizing using plots and animations.
+
+<details> <summary><code>get_instability_data(Ue_profile_raw, r_disk, R_max, m_values, dy): ndarray</code></summary> <p> Computes the maximum growth rates for a given velocity profile using Rayleigh’s criterion.<br> <b>Ue_profile_raw</b>: Raw edge velocity profile.<br> <b>r_disk</b>: Reference disk radius.<br> <b>R_max</b>: Maximum radius.<br> <b>m_values</b>: Array of mode numbers to evaluate.<br> <b>dy</b>: Grid spacing in y.<br> <b>ndarray</b>: Array of maximum growth rates for each mode. </p></details> <details> <summary><code>write_instability_data(directory, variable_name, iterations, instability_data): None</code></summary> <p> Writes the computed instability data to a text file.<br> <b>directory</b>: Base directory.<br> <b>variable_name</b>: Name for subdirectory and file.<br> <b>iterations</b>: Array of iteration numbers.<br> <b>instability_data</b>: 2D array of growth rates.<br> <b>None</b>: Writes file and prints confirmation. </p></details> <details> <summary><code>read_instability_data(directory, variable_name): tuple</code></summary> <p> Reads the instability data from a text file.<br> <b>directory</b>: Base directory.<br> <b>variable_name</b>: Subdirectory and file name.<br> <b>tuple</b>: (2D array of growth rates, list of iterations). </p></details> <details> <summary><code>get_instability_plot(max_growth_rates, m_values, upper_lim, bottom_lim): tuple</code></summary> <p> Plots the maximum growth rate as a function of mode number.<br> <b>max_growth_rates</b>: Array of growth rates.<br> <b>m_values</b>: Array of mode numbers.<br> <b>upper_lim</b>: Upper y-axis limit.<br> <b>bottom_lim</b>: Lower y-axis limit.<br> <b>tuple</b>: (Figure, line plot, iteration text, max mode text). </p></details> <details> <summary><code>get_instability_anim(instability_data, m_values, nframes, iter_per_step, frame_initial): FuncAnimation</code></summary> <p> Creates an animation of the instability growth rate profile over time.<br> <b>instability_data</b>: 2D array of growth rates over time.<br> <b>m_values</b>: Array of mode numbers.<br> <b>nframes</b>: Number of frames.<br> <b>iter_per_step</b>: Iterations per frame.<br> <b>frame_initial</b>: Initial frame index.<br> <b>FuncAnimation</b>: Matplotlib animation object. </p></details>
 
