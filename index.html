@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
   <meta charset="UTF-8">
   <title>Dynamic Shear Velocity Poster</title>
   <style>
@@ -103,346 +106,50 @@
 <div class="section">
   <h2>Theoretical Background</h2>
   <p><strong>Theoretical description:</strong>Two-fluid model + Maxwell equations.</p>
-  <p>
-    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>m</mi>
-    <mi>s</mi>
-  </msub>
-  <msub>
-    <mi>n</mi>
-    <mi>s</mi>
-  </msub>
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">(</mo>
-    <mfrac>
-      <mrow>
-        <mi>∂</mi>
-        <mover>
-          <msub>
-            <mi>u</mi>
-            <mi>s</mi>
-          </msub>
-          <mo>→</mo>
-        </mover>
-      </mrow>
-      <mrow>
-        <mi>∂</mi>
-        <mi>t</mi>
-      </mrow>
-    </mfrac>
-    <mo>+</mo>
-    <mrow data-mjx-texclass="INNER">
-      <mo data-mjx-texclass="OPEN">(</mo>
-      <mover>
-        <msub>
-          <mi>u</mi>
-          <mi>s</mi>
-        </msub>
-        <mo>→</mo>
-      </mover>
-      <mo>⋅</mo>
-      <mrow data-mjx-texclass="ORD">
-        <mover>
-          <mi mathvariant="normal">∇</mi>
-          <mo stretchy="false">→</mo>
-        </mover>
-      </mrow>
-      <mo data-mjx-texclass="CLOSE">)</mo>
-    </mrow>
-    <mover>
-      <msub>
-        <mi>u</mi>
-        <mi>s</mi>
-      </msub>
-      <mo>→</mo>
-    </mover>
-    <mo data-mjx-texclass="CLOSE">)</mo>
-  </mrow>
-  <mo>=</mo>
-  <msub>
-    <mi>q</mi>
-    <mi>s</mi>
-  </msub>
-  <msub>
-    <mi>n</mi>
-    <mi>s</mi>
-  </msub>
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">(</mo>
-    <mrow data-mjx-texclass="ORD">
-      <mover>
-        <mi>E</mi>
-        <mo stretchy="false">→</mo>
-      </mover>
-    </mrow>
-    <mo>+</mo>
-    <mover>
-      <msub>
-        <mi>u</mi>
-        <mi>s</mi>
-      </msub>
-      <mo>→</mo>
-    </mover>
-    <mo>×</mo>
-    <mrow data-mjx-texclass="ORD">
-      <mover>
-        <mi>B</mi>
-        <mo stretchy="false">→</mo>
-      </mover>
-    </mrow>
-    <mo data-mjx-texclass="CLOSE">)</mo>
-  </mrow>
-  <mstyle scriptlevel="0">
-    <mspace width="4em"></mspace>
-  </mstyle>
-  <mfrac>
-    <mrow>
-      <mi>∂</mi>
-      <msub>
-        <mi>n</mi>
-        <mi>s</mi>
-      </msub>
-    </mrow>
-    <mrow>
-      <mi>∂</mi>
-      <mi>t</mi>
-    </mrow>
-  </mfrac>
-  <mo>+</mo>
-  <mrow data-mjx-texclass="ORD">
-    <mover>
-      <mi mathvariant="normal">∇</mi>
-      <mo stretchy="false">→</mo>
-    </mover>
-  </mrow>
-  <mo>⋅</mo>
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">(</mo>
-    <msub>
-      <mi>n</mi>
-      <mi>s</mi>
-    </msub>
-    <mover>
-      <msub>
-        <mi>u</mi>
-        <mi>s</mi>
-      </msub>
-      <mo>→</mo>
-    </mover>
-    <mo data-mjx-texclass="CLOSE">)</mo>
-  </mrow>
-  <mo>=</mo>
-  <mn>0</mn>
-    </math>
-  </p>
+<p>
+  $$
+  m_s n_s \left( \frac{\partial \vec{u}_s}{\partial t} + (\vec{u}_s \cdot \vec{\nabla}) \vec{u}_s \right)
+  = q_s n_s (\vec{E} + \vec{u}_s \times \vec{B})
+  $$
+</p>
+<p>
+  $$
+  \frac{\partial n_s}{\partial t} + \vec{\nabla} \cdot (n_s \vec{u}_s) = 0
+  $$
+</p>
   <p>Drift velocity derived from E×B drift:</p>
-  <p>
-    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-      <mi>v</mi>
-      <mi>D</mi>
-    </msub>
-  <mo>=</mo>
-  <mfrac>
-    <mrow>
-      <mover><mi>E</mi><mo>&rarr;</mo></mover>
-      <mo>&times;</mo>
-      <mover><mi>B</mi><mo>&rarr;</mo></mover>
-    </mrow>
-    <msup><mi>B</mi><mn>2</mn></msup>
-  </mfrac>
-    </math>
-  </p>
+<p>
+  $$
+  v_D = \frac{\vec{E} \times \vec{B}}{B^2}
+  $$
+</p>
+
   <p><strong>Instability characterization:</strong> First order perturbation theory.</p>
   <p><strong>Growth rate of the perturbation modes:</strong> (Defined as the imaginary part of ω) Can be obtained by solving Rayleigh equation [3-5]:</p>
-  <p>
-    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">(</mo>
-    <msub>
-      <mi>v</mi>
-      <mi>D</mi>
-    </msub>
-    <mo>−</mo>
-    <mfrac>
-      <mi>ω</mi>
-      <mi>k</mi>
-    </mfrac>
-    <mo data-mjx-texclass="CLOSE">)</mo>
-  </mrow>
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">(</mo>
-    <mfrac>
-      <mrow>
-        <msup>
-          <mi>∂</mi>
-          <mn>2</mn>
-        </msup>
-        <mrow data-mjx-texclass="ORD">
-          <mover>
-            <mi>ψ</mi>
-            <mo stretchy="false">^</mo>
-          </mover>
-        </mrow>
-      </mrow>
-      <mrow>
-        <mi>∂</mi>
-        <msup>
-          <mi>r</mi>
-          <mn>2</mn>
-        </msup>
-      </mrow>
-    </mfrac>
-    <mo>−</mo>
-    <msup>
-      <mi>k</mi>
-      <mn>2</mn>
-    </msup>
-    <mrow data-mjx-texclass="ORD">
-      <mover>
-        <mi>ψ</mi>
-        <mo stretchy="false">^</mo>
-      </mover>
-    </mrow>
-    <mo data-mjx-texclass="CLOSE">)</mo>
-  </mrow>
-  <mo>−</mo>
-  <mfrac>
-    <mrow>
-      <msup>
-        <mi>d</mi>
-        <mn>2</mn>
-      </msup>
-      <msub>
-        <mi>v</mi>
-        <mi>D</mi>
-      </msub>
-    </mrow>
-    <mrow>
-      <mi>d</mi>
-      <msup>
-        <mi>r</mi>
-        <mn>2</mn>
-      </msup>
-    </mrow>
-  </mfrac>
-  <mrow data-mjx-texclass="ORD">
-    <mover>
-      <mi>ψ</mi>
-      <mo stretchy="false">^</mo>
-    </mover>
-  </mrow>
-  <mo>=</mo>
-  <mn>0</mn>
-  <mstyle scriptlevel="0">
-    <mspace width="1em"></mspace>
-  </mstyle>
-  <mo stretchy="false">⟹</mo>
-  <mstyle scriptlevel="0">
-    <mspace width="1em"></mspace>
-  </mstyle>
-  <mi>ω</mi>
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">(</mo>
-    <mi>k</mi>
-    <mo>,</mo>
-    <msub>
-      <mi>v</mi>
-      <mi>D</mi>
-    </msub>
-    <mo>,</mo>
-    <mi>r</mi>
-    <mo data-mjx-texclass="CLOSE">)</mo>
-  </mrow>
-  <mo>∈</mo>
-  <mrow data-mjx-texclass="ORD">
-    <mi mathvariant="double-struck">ℂ</mi>
-  </mrow>
-  <mstyle scriptlevel="0">
-    <mspace width="1em"></mspace>
-  </mstyle>
-  <mo stretchy="false">⟹</mo>
-  <mstyle scriptlevel="0">
-    <mspace width="1em"></mspace>
-  </mstyle>
-  <mrow data-mjx-texclass="INNER">
-    <mo data-mjx-texclass="OPEN">|</mo>
-    <msub>
-      <mi>A</mi>
-      <mi>k</mi>
-    </msub>
-    <mo data-mjx-texclass="CLOSE">|</mo>
-  </mrow>
-  <mo>∝</mo>
-  <msup>
-    <mi>e</mi>
-    <mrow data-mjx-texclass="ORD">
-      <msub>
-        <mi>ω</mi>
-        <mi>i</mi>
-      </msub>
-      <mi>t</mi>
-    </mrow>
-  </msup>
-    </math>
-  </p>
+<p>
+  $$
+  \left( v_D - \frac{\omega}{k} \right) 
+  \left( \frac{\partial^2 \hat{\psi}}{\partial r^2} - k^2 \hat{\psi} \right) 
+  - \frac{d^2 v_D}{dr^2} \hat{\psi} = 0
+  \Rightarrow \omega(k, v_D, r) \in \mathbb{C}
+  \Rightarrow |A_k| \propto e^{\omega_i t}
+  $$
+</p>
   <ul>
     <li><strong>k:</strong> Wavenumber of the perturbation:</li>
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>k</mi>
-  <mo>=</mo>
-  <mfrac><mi>m</mi><mi>r</mi></mfrac>
-      </math>
+<p>
+  $$
+  k = \frac{m}{r}
+  $$
+</p>
     <li><strong>v<sub>D</sub>:</strong> Radial profile of the E×B drift velocity.</li>
     <li><strong>|A<sub>k</sub>|:</strong> Perturbation amplitude.</li>
-    <li><strong>ψ:</strong> Stream functionx defined for each species:</li>
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>u</mi>
-    <mi>x</mi>
-  </msub>
-  <mo>=</mo>
-  <mfrac>
-    <mrow>
-      <mi>∂</mi>
-      <mrow data-mjx-texclass="ORD">
-        <mover>
-          <mi>ψ</mi>
-          <mo stretchy="false">^</mo>
-        </mover>
-      </mrow>
-    </mrow>
-    <mrow>
-      <mi>∂</mi>
-      <mi>y</mi>
-    </mrow>
-  </mfrac>
-  <mstyle scriptlevel="0">
-    <mspace width="1em"></mspace>
-  </mstyle>
-  <msub>
-    <mi>u</mi>
-    <mi>y</mi>
-  </msub>
-  <mo>=</mo>
-  <mo>−</mo>
-  <mfrac>
-    <mrow>
-      <mi>∂</mi>
-      <mrow data-mjx-texclass="ORD">
-        <mover>
-          <mi>ψ</mi>
-          <mo stretchy="false">^</mo>
-        </mover>
-      </mrow>
-    </mrow>
-    <mrow>
-      <mi>∂</mi>
-      <mi>x</mi>
-    </mrow>
-  </mfrac>
-      </math>
+    <li><strong>ψ:</strong> Stream function, defined for each species:</li>
+<p>
+  $$
+  u_x = \frac{\partial \hat{\psi}}{\partial y}, \quad u_y = -\frac{\partial \hat{\psi}}{\partial x}
+  $$
+</p>
   </ul>
 
 
@@ -452,83 +159,12 @@
   <h2>Simulation</h2>
   <p> Simulation (x,y)    ⟹    Theoretical model (r,θ)</p>
   <p><strong>Shear velocity layer profile</strong>:</p>
-  <p>
-    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mover>
-    <msub>
-      <mi>v</mi>
-      <mi>D</mi>
-    </msub>
-    <mo accent="true">―</mo>
-  </mover>
-  <mo stretchy="false">(</mo>
-  <mi>r</mi>
-  <mo stretchy="false">)</mo>
-  <mo>=</mo>
-  <mfrac>
-    <mn>1</mn>
-    <mrow>
-      <mn>2</mn>
-      <mi>π</mi>
-    </mrow>
-  </mfrac>
-  <msubsup>
-    <mo data-mjx-texclass="OP">∫</mo>
-    <mn>0</mn>
-    <mrow data-mjx-texclass="ORD">
-      <mn>2</mn>
-      <mi>π</mi>
-    </mrow>
-  </msubsup>
-  <msub>
-    <mi>v</mi>
-    <mi>D</mi>
-  </msub>
-  <mo stretchy="false">(</mo>
-  <mi>r</mi>
-  <mo>,</mo>
-  <mi>θ</mi>
-  <mo stretchy="false">)</mo>
-  <mi>d</mi>
-  <mi>θ</mi>
-  <mo>≃</mo>
-  <mfrac>
-    <mn>1</mn>
-    <mi>N</mi>
-  </mfrac>
-  <munderover>
-    <mo data-mjx-texclass="OP">∑</mo>
-    <mrow data-mjx-texclass="ORD">
-      <msub>
-        <mi>i</mi>
-        <mi>θ</mi>
-      </msub>
-      <mo>=</mo>
-      <mn>0</mn>
-    </mrow>
-    <mrow data-mjx-texclass="ORD">
-      <msub>
-        <mi>N</mi>
-        <mi>θ</mi>
-      </msub>
-    </mrow>
-  </munderover>
-  <msub>
-    <mi>v</mi>
-    <mrow data-mjx-texclass="ORD">
-      <mi>D</mi>
-      <mo>,</mo>
-      <msub>
-        <mi>i</mi>
-        <mi>θ</mi>
-      </msub>
-    </mrow>
-  </msub>
-  <mo stretchy="false">(</mo>
-  <mi>r</mi>
-  <mo stretchy="false">)</mo>
-    </math>
-  </p>
+<p>
+  $$
+  \bar{v}_D(r) = \frac{1}{2\pi} \int_0^{2\pi} v_D(r, \theta) \, d\theta 
+  \approx \frac{1}{N} \sum_{i_\theta=0}^{N_\theta} v_{D, i_\theta}(r)
+  $$
+</p>
   <ul>
     <li>Approximate analytic profiles    ⟹    Inaccurate results</li>
     <li>Numerically obtained profiles    ⟹    More accurate results</li>
@@ -642,12 +278,8 @@
   <h2>Further Information</h2>
   <p>Detailed procedure for the data acquisition and analysis, along with the developed tools and animations at the GitHub repository:</p>
 
-  <a class="code-link" href="https://github.com/ivan-a-09/Data-analysis-and-automatization-tools-for-OOPIC-Pro/" target="_blank" title="GituHub repository of the study">https://github.com/ivan-a-09/Data-analysis-and-automatization-tools-for-OOPIC-Pro/</a>
+  <a class="code-link" href="https://github.com/ivan-a-09/Data-analysis-and-automatization-tools-for-OOPIC-Pro.git" target="_blank" title="GituHub repository of the study">https://github.com/ivan-a-09/Data-analysis-and-automatization-tools-for-OOPIC-Pro.git</a>
 
-
-  <figure style="text-align: center;">
-    <img src="media_files/GitHub_QR.png"  width="20%">
-  </figure>
 </div>
 
 <div class="section references">
