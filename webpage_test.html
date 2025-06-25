@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Shear Velocity Poster</title>
+  <style>
+    body {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+      margin: 0;
+      padding: 2em;
+      background: #ffffff;
+      color: #000000;
+      
+    }
+    header, footer {
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      text-align: center;
+      margin-bottom: 0.2em;
+      color: #079B78;
+    }
+    h2 {
+      font-size: 2em;
+      color: #079B78;
+      border-bottom: 5px solid #079B78;
+      padding-bottom: 0.2em;
+      margin-top: 1.5em;
+    }
+    .authors {
+      text-align: center;
+      font-size: 1em;
+    }
+    .affiliation {
+      text-align: center;
+      font-size: 0.9em;
+      margin-bottom: 1em;
+    }
+    .section {
+      margin-bottom: 5em;
+    }
+    img.placeholder {
+      display: block;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      background-color: #ddd;
+      color: #333;
+      text-align: center;
+      line-height: 300px;
+      margin: 1em auto;
+      font-style: italic;
+    }
+    .references {
+      font-size: 0.85em;
+    }
+    .code-link {
+      font-family: monospace;
+      word-break: break-all;
+    }
+    .container {
+      display: flex;
+    }
+    .column {
+      flex: 1;
+      padding: 0px;
+    }
+    strong {
+    color: #079B78;
+  }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Dynamic Shear Velocity Layer Effects on Plasma Instabilities: Theory and Simulation</h1>
+  <div class="authors">
+    I. Alcaraz Aguado<sup>1</sup>, V. Muralidhara Srivatsa<sup>1</sup>, E. Gravier<sup>1</sup>, S. Heuraux<sup>1</sup>
+  </div>
+  <div class="affiliation">
+    <sup>1</sup>Institut Jean Lamour, Lorraine University, 2, allée André Guinier, 54011 Nancy, France
+  </div>
+</header>
+
+<div class="section">
+  <h2>Motivation and Context</h2>
+  <p><strong>Motivation:</strong> Study of instabilities for the new linear radiofrequency device at Campus IJL, Université de Lorraine, called SPEKTRE [1].</p>
+  <p><strong>Subject:</strong> Magnetized plasma column with an axial magnetic field. Kelvin-Helmholtz instabilities derived from E×B shear, characterization on the linear growth phase.</p>
+  <p><strong>Methodology:</strong> Particle-in-Cell simulation program (OOPIC Pro [2]), where trajectories of all particles and electrostatic fields are calculated.</p>
+  <p><strong>Parametric studies:</strong> Number density for electrons and ions, electric potential and electric field modulus (proportional to the drift velocity).</p>
+  <figure style="text-align: center;">
+    <video class="w-full rounded-xl shadow" controls preload="metadata" width="80%">
+      <source src="videos/Ue_var.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <figcaption style="margin-top: 0.5rem; font-style: italic;">
+      <strong>Drift velocity instabilities evolution for a magnetized plasma column prfile</strong>.<br>
+    </figcaption>
+  </figure>
+</div>
+
+<div class="section">
+  <h2>Theoretical Background</h2>
+  <p><strong>Theoretical description:</strong>Two-fluid model + Maxwell equations.</p>
+  <p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>m</mi>
+    <mi>s</mi>
+  </msub>
+  <msub>
+    <mi>n</mi>
+    <mi>s</mi>
+  </msub>
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">(</mo>
+    <mfrac>
+      <mrow>
+        <mi>∂</mi>
+        <mover>
+          <msub>
+            <mi>u</mi>
+            <mi>s</mi>
+          </msub>
+          <mo>→</mo>
+        </mover>
+      </mrow>
+      <mrow>
+        <mi>∂</mi>
+        <mi>t</mi>
+      </mrow>
+    </mfrac>
+    <mo>+</mo>
+    <mrow data-mjx-texclass="INNER">
+      <mo data-mjx-texclass="OPEN">(</mo>
+      <mover>
+        <msub>
+          <mi>u</mi>
+          <mi>s</mi>
+        </msub>
+        <mo>→</mo>
+      </mover>
+      <mo>⋅</mo>
+      <mrow data-mjx-texclass="ORD">
+        <mover>
+          <mi mathvariant="normal">∇</mi>
+          <mo stretchy="false">→</mo>
+        </mover>
+      </mrow>
+      <mo data-mjx-texclass="CLOSE">)</mo>
+    </mrow>
+    <mover>
+      <msub>
+        <mi>u</mi>
+        <mi>s</mi>
+      </msub>
+      <mo>→</mo>
+    </mover>
+    <mo data-mjx-texclass="CLOSE">)</mo>
+  </mrow>
+  <mo>=</mo>
+  <msub>
+    <mi>q</mi>
+    <mi>s</mi>
+  </msub>
+  <msub>
+    <mi>n</mi>
+    <mi>s</mi>
+  </msub>
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">(</mo>
+    <mrow data-mjx-texclass="ORD">
+      <mover>
+        <mi>E</mi>
+        <mo stretchy="false">→</mo>
+      </mover>
+    </mrow>
+    <mo>+</mo>
+    <mover>
+      <msub>
+        <mi>u</mi>
+        <mi>s</mi>
+      </msub>
+      <mo>→</mo>
+    </mover>
+    <mo>×</mo>
+    <mrow data-mjx-texclass="ORD">
+      <mover>
+        <mi>B</mi>
+        <mo stretchy="false">→</mo>
+      </mover>
+    </mrow>
+    <mo data-mjx-texclass="CLOSE">)</mo>
+  </mrow>
+  <mstyle scriptlevel="0">
+    <mspace width="4em"></mspace>
+  </mstyle>
+  <mfrac>
+    <mrow>
+      <mi>∂</mi>
+      <msub>
+        <mi>n</mi>
+        <mi>s</mi>
+      </msub>
+    </mrow>
+    <mrow>
+      <mi>∂</mi>
+      <mi>t</mi>
+    </mrow>
+  </mfrac>
+  <mo>+</mo>
+  <mrow data-mjx-texclass="ORD">
+    <mover>
+      <mi mathvariant="normal">∇</mi>
+      <mo stretchy="false">→</mo>
+    </mover>
+  </mrow>
+  <mo>⋅</mo>
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">(</mo>
+    <msub>
+      <mi>n</mi>
+      <mi>s</mi>
+    </msub>
+    <mover>
+      <msub>
+        <mi>u</mi>
+        <mi>s</mi>
+      </msub>
+      <mo>→</mo>
+    </mover>
+    <mo data-mjx-texclass="CLOSE">)</mo>
+  </mrow>
+  <mo>=</mo>
+  <mn>0</mn>
+    </math>
+  </p>
+  <p>Drift velocity derived from E×B drift:</p>
+  <p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+      <mi>v</mi>
+      <mi>D</mi>
+    </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mover><mi>E</mi><mo>&rarr;</mo></mover>
+      <mo>&times;</mo>
+      <mover><mi>B</mi><mo>&rarr;</mo></mover>
+    </mrow>
+    <msup><mi>B</mi><mn>2</mn></msup>
+  </mfrac>
+    </math>
+  </p>
+  <p><strong>Instability characterization:</strong> First order perturbation theory.</p>
+  <p><strong>Growth rate of the perturbation modes:</strong> (Defined as the imaginary part of ω) Can be obtained by solving Rayleigh equation [3-5]:</p>
+  <p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">(</mo>
+    <msub>
+      <mi>v</mi>
+      <mi>D</mi>
+    </msub>
+    <mo>−</mo>
+    <mfrac>
+      <mi>ω</mi>
+      <mi>k</mi>
+    </mfrac>
+    <mo data-mjx-texclass="CLOSE">)</mo>
+  </mrow>
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">(</mo>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mi>∂</mi>
+          <mn>2</mn>
+        </msup>
+        <mrow data-mjx-texclass="ORD">
+          <mover>
+            <mi>ψ</mi>
+            <mo stretchy="false">^</mo>
+          </mover>
+        </mrow>
+      </mrow>
+      <mrow>
+        <mi>∂</mi>
+        <msup>
+          <mi>r</mi>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+    </mfrac>
+    <mo>−</mo>
+    <msup>
+      <mi>k</mi>
+      <mn>2</mn>
+    </msup>
+    <mrow data-mjx-texclass="ORD">
+      <mover>
+        <mi>ψ</mi>
+        <mo stretchy="false">^</mo>
+      </mover>
+    </mrow>
+    <mo data-mjx-texclass="CLOSE">)</mo>
+  </mrow>
+  <mo>−</mo>
+  <mfrac>
+    <mrow>
+      <msup>
+        <mi>d</mi>
+        <mn>2</mn>
+      </msup>
+      <msub>
+        <mi>v</mi>
+        <mi>D</mi>
+      </msub>
+    </mrow>
+    <mrow>
+      <mi>d</mi>
+      <msup>
+        <mi>r</mi>
+        <mn>2</mn>
+      </msup>
+    </mrow>
+  </mfrac>
+  <mrow data-mjx-texclass="ORD">
+    <mover>
+      <mi>ψ</mi>
+      <mo stretchy="false">^</mo>
+    </mover>
+  </mrow>
+  <mo>=</mo>
+  <mn>0</mn>
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+  <mo stretchy="false">⟹</mo>
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+  <mi>ω</mi>
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">(</mo>
+    <mi>k</mi>
+    <mo>,</mo>
+    <msub>
+      <mi>v</mi>
+      <mi>D</mi>
+    </msub>
+    <mo>,</mo>
+    <mi>r</mi>
+    <mo data-mjx-texclass="CLOSE">)</mo>
+  </mrow>
+  <mo>∈</mo>
+  <mrow data-mjx-texclass="ORD">
+    <mi mathvariant="double-struck">ℂ</mi>
+  </mrow>
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+  <mo stretchy="false">⟹</mo>
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+  <mrow data-mjx-texclass="INNER">
+    <mo data-mjx-texclass="OPEN">|</mo>
+    <msub>
+      <mi>A</mi>
+      <mi>k</mi>
+    </msub>
+    <mo data-mjx-texclass="CLOSE">|</mo>
+  </mrow>
+  <mo>∝</mo>
+  <msup>
+    <mi>e</mi>
+    <mrow data-mjx-texclass="ORD">
+      <msub>
+        <mi>ω</mi>
+        <mi>i</mi>
+      </msub>
+      <mi>t</mi>
+    </mrow>
+  </msup>
+    </math>
+  </p>
+  <ul>
+    <li><strong>k:</strong> Wavenumber of the perturbation:</li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>k</mi>
+  <mo>=</mo>
+  <mfrac><mi>m</mi><mi>r</mi></mfrac>
+      </math>
+    <li><strong>v<sub>D</sub>:</strong> Radial profile of the E×B drift velocity.</li>
+    <li><strong>|A<sub>k</sub>|:</strong> Perturbation amplitude.</li>
+    <li><strong>ψ:</strong> Stream functionx defined for each species:</li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>u</mi>
+    <mi>x</mi>
+  </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mi>∂</mi>
+      <mrow data-mjx-texclass="ORD">
+        <mover>
+          <mi>ψ</mi>
+          <mo stretchy="false">^</mo>
+        </mover>
+      </mrow>
+    </mrow>
+    <mrow>
+      <mi>∂</mi>
+      <mi>y</mi>
+    </mrow>
+  </mfrac>
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+  <msub>
+    <mi>u</mi>
+    <mi>y</mi>
+  </msub>
+  <mo>=</mo>
+  <mo>−</mo>
+  <mfrac>
+    <mrow>
+      <mi>∂</mi>
+      <mrow data-mjx-texclass="ORD">
+        <mover>
+          <mi>ψ</mi>
+          <mo stretchy="false">^</mo>
+        </mover>
+      </mrow>
+    </mrow>
+    <mrow>
+      <mi>∂</mi>
+      <mi>x</mi>
+    </mrow>
+  </mfrac>
+      </math>
+  </ul>
+
+
+</div>
+
+<div class="section">
+  <h2>Simulation</h2>
+  <p> Simulation (x,y)    ⟹    Theoretical model (r,θ)</p>
+  <p><strong>Shear velocity layer profile</strong>:</p>
+  <p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mover>
+    <msub>
+      <mi>v</mi>
+      <mi>D</mi>
+    </msub>
+    <mo accent="true">―</mo>
+  </mover>
+  <mo stretchy="false">(</mo>
+  <mi>r</mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <mfrac>
+    <mn>1</mn>
+    <mrow>
+      <mn>2</mn>
+      <mi>π</mi>
+    </mrow>
+  </mfrac>
+  <msubsup>
+    <mo data-mjx-texclass="OP">∫</mo>
+    <mn>0</mn>
+    <mrow data-mjx-texclass="ORD">
+      <mn>2</mn>
+      <mi>π</mi>
+    </mrow>
+  </msubsup>
+  <msub>
+    <mi>v</mi>
+    <mi>D</mi>
+  </msub>
+  <mo stretchy="false">(</mo>
+  <mi>r</mi>
+  <mo>,</mo>
+  <mi>θ</mi>
+  <mo stretchy="false">)</mo>
+  <mi>d</mi>
+  <mi>θ</mi>
+  <mo>≃</mo>
+  <mfrac>
+    <mn>1</mn>
+    <mi>N</mi>
+  </mfrac>
+  <munderover>
+    <mo data-mjx-texclass="OP">∑</mo>
+    <mrow data-mjx-texclass="ORD">
+      <msub>
+        <mi>i</mi>
+        <mi>θ</mi>
+      </msub>
+      <mo>=</mo>
+      <mn>0</mn>
+    </mrow>
+    <mrow data-mjx-texclass="ORD">
+      <msub>
+        <mi>N</mi>
+        <mi>θ</mi>
+      </msub>
+    </mrow>
+  </munderover>
+  <msub>
+    <mi>v</mi>
+    <mrow data-mjx-texclass="ORD">
+      <mi>D</mi>
+      <mo>,</mo>
+      <msub>
+        <mi>i</mi>
+        <mi>θ</mi>
+      </msub>
+    </mrow>
+  </msub>
+  <mo stretchy="false">(</mo>
+  <mi>r</mi>
+  <mo stretchy="false">)</mo>
+    </math>
+  </p>
+  <ul>
+    <li>Approximate analytic profiles    ⟹    Inaccurate results</li>
+    <li>Numerically obtained profiles    ⟹    More accurate results</li>
+  </ul>
+  <p>Time evolution of a shear velocity layer profile:</p>
+  <figure style="text-align: center;">
+    <video class="w-full rounded-xl shadow" controls preload="metadata" width="80%">
+      <source src="videos/Ue_shear.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <figcaption style="margin-top: 0.5rem; font-style: italic;">
+      <strong>Shear layer profile and width measurement</strong>.<br>
+      (average ± standard deviation over the azimuthal direction)
+    </figcaption>
+  </figure>
+    <figure style="text-align: center;">
+    <video class="w-full rounded-xl shadow" controls preload="metadata" width="80%">
+      <source src="videos/Ue_inst_100.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <figcaption style="margin-top: 0.5rem; font-style: italic;">
+      <strong>Time evolution of the semi-analytic growth rates due to the shear velocity layer dynamics.</strong>
+    </figcaption>
+  </figure>
+  <p><strong>Rayleigh equation solution:</strong> Obtained numerically using finite differences schemes and a generalized eigenvalue problem solver.</p>
+  <p><strong>Numerical study:</strong> A Fourier transform is performed to every circle of constant radius. This leads to an amplitude value in the Fourier space for every mode at every radius.</p>
+  <figure style="text-align: center;">
+    <video class="w-full rounded-xl shadow" controls preload="metadata" width="95%">
+      <source src="videos/mosaic_480.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <figcaption style="margin-top: 0.5rem; font-style: italic;">
+      <strong>Data processing example:</strong>.<br>
+      Cartesian coordinates - Polar coordinates - Fourier space
+    </figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <video class="w-full rounded-xl shadow" controls preload="metadata" width="80%">
+      <source src="videos/phi_fft.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <figcaption style="margin-top: 0.5rem; font-style: italic;">
+      <strong>Fourier amplitude ( ∝ |𝑨<sub>m</sub>| ) for every perturbation mode and radius.</strong>
+    </figcaption>
+  </figure>
+
+</div>
+
+
+
+<div class="section">
+  <h2>Growth rates dependence on the magnetic field</h2>
+    <p>Solving Rayleigh equation and averaging over the linear phase of the perturbation
+    development, a semi-analytical value can be obtained.</p>
+    <p>Selecting the shear layer and studying the time derivative of every perturbation mode
+    (averaged over the same linear interval), it is possible to obtain a numerical value for
+    every mode’s growth rate.</p>
+
+    <div class="container">
+      <div class="column">
+        <figure>
+          <img src="videos/wi_vs_B_wi_distrib_theo.png" width="90%">
+          <figcaption style="text-align: justify;"><strong>Semi-analytical average growth rates for the 80 first modes in the linear instability time span (calculated for the electric potential).</strong></figcaption>
+        </figure>
+      </div>
+      <div class="column">
+        <figure>
+          <img src="videos/wi_vs_B_wi_distrib_theo.png"  width="90%">
+          <figcaption style="text-align: justify;"><strong>Numerical average growth rates for the 80 first modes in the linear instability time span (calculated for the electric potential).</strong></figcaption>
+        </figure>
+      </div>
+    </div> 
+    
+
+    <div class="container">
+      <div class="column">
+        <figure>
+          <img src="videos/wi_vs_B_max_wi.png" width="90%">
+          <figcaption style="text-align: justify;"><strong>Maximum growth rate of any mode number</strong></figcaption>
+        </figure>
+      </div>
+      <div class="column">
+        <figure>
+          <img src="videos/wi_vs_B_max_m.png"  width="90%">
+          <figcaption style="text-align: justify;"><strong>Mode number of the perturbation with the highest growth rate</strong></figcaption>
+        </figure>
+      </div>
+    </div> 
+
+</div>
+
+
+<div class="section">
+  <h2>Assessment and Prospects</h2>
+<ul>
+<li>The study <strong>successfully analysed Kelvin-Helmholtz instability</strong> in a simple shear-driven plasma profile.</li>
+<li><strong>Higher values of B lead to a better stability</strong> (lower growth rates and higher development times for the perturbations).</li>
+<li>Shear velocity layers were influenced by <strong>charge separation</strong> due to differences in ion and electron <strong>cyclotron motion</strong>, leading to its <strong>dynamics</strong>.<br>
+&nbsp; &nbsp; &nbsp; &nbsp;Accounting for this in the analysis enabled theoretical and numerical comparison.</li>
+<li><strong>Theoretical limitations</strong> of the fluid model were found, as it couldn’t describe the shear layer dynamics.</li>
+<li><strong>Prospective work:</strong></li>
+  <ul>
+    <li>Study <strong>realistic SPEKTRE conditions</strong> and migrate to a kinetic model for the analytical approach.</li>
+    <li>Improving the <strong>resolution of the PIC simulation</strong>, as this study was limited by its two-month duration and personal computer level computational power.</li>
+  </ul>
+</ul>
+
+</div>
+
+<div class="section">
+  <h2>Further Information</h2>
+  <p>Detailed procedure for the data acquisition and analysis, along with the developed tools and animations at:</p>
+
+  <a class="code-link" href="https://github.com/ivan-a-09/Data-analysis-and-automatization-tools-for-OOPIC-Pro.git" target="_blank" title="GituHub repository of the study">https://github.com/ivan-a-09/Data-analysis-and-automatization-tools-for-OOPIC-Pro.git</a>
+
+
+  <figure style="text-align: center;">
+    <img src="videos/GitHub_QR.png"  width="20%">
+  </figure>
+</div>
+
+<div class="section references">
+  <h2>References</h2>
+  <ol>
+
+    <li>F Brochard, D Geneve, S Heuraux, V Bobkov, D Del Sarto, E Faudot, A Ghizzo, E Gravier,
+N Lemoine, M Lesur, N Louis, J Moritz, T Reveille, V Rohde, U Stroth, G Urbanczyk, F
+Volpe, and H Zohm. SPEKTRE, a linear radiofrequency device for investigating edge
+plasma physics. In proceedings of the 49th EPS Conference on Plasma Physics, Bordeaux,
+France, July 2023.</li>
+<li>J.P. Verboncoeur. Oopic: object oriented particle-in-cell code. In International
+Conference on Plasma Science (papers in summary form only received), page 244, 1995.</li>
+<li>Lord Rayleigh. On the stability, or instability, of certain fluid motions. Proc. London
+Math. Soc., 1880.</li>
+<li>Francis F. Chen, 1929. Introduction to plasma physics and controlled fusion. Second
+edition. New York, Plenum Press, c1984.</li>
+<li>Nicola D’Angelo. Kelvin—helmholtz instability in a fully ionized plasma in a magnetic
+field. The Physics of Fluids, 8(9):1748–1750, 09 1965.</li>
+
+  </ol>
+</div>
+
+<footer>
+  <div class="container">
+      <div class="column">
+        <figure><img src="videos/FusionEP.png"  width="70%"></figure>
+      </div>
+      <div class="column">
+        <figure><img src="videos/IJL.png"  width="70%"></figure>
+      </div>
+      <div class="column">
+        <figure><img src="videos/Erasmus.png"  width="70%"></figure>
+      </div>
+    </div> 
+</footer>
+
+</body>
+</html>
